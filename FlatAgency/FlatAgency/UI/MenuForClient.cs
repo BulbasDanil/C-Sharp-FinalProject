@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlatAgency.UI
 {
-    class Menu
+    class MenuForClient
     {
     }
 }
