@@ -48,6 +48,7 @@
     <Compile Include="Catalogs\OfficeCatalog.cs" />
     <Compile Include="Models\Flat.cs" />
     <Compile Include="Models\House.cs" />
+    <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Office.cs" />
     <Compile Include="DataManagers\FlatCatalogManager.cs" />
     <Compile Include="DataManagers\HouseCatalogManager.cs" />
