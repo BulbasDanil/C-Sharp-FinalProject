@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlatAgency.DataModels
+namespace FlatAgency.DataManagers
 {
     class FlatCatalogManager
     {

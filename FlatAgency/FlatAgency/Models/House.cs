@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlatAgency.Models;
+using System.Runtime.Serialization;
 
-namespace FlatAgency.DataManagers
+namespace FlatAgency.Models
 {
-    class House : Building
+    [DataContract]
+     public class House : Building
     {
+        [DataMember]
         public int Floors { get; set; }
+        [DataMember]
         public int Square { get; set; }
 
         public override string ToString()
