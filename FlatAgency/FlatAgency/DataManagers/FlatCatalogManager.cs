@@ -12,10 +12,15 @@ namespace FlatAgency.DataManagers
 {
     class FlatCatalogManager
     {
-        FlatCatalog FlatCatalog = new FlatCatalog();
+        public FlatCatalog FlatCatalog = new FlatCatalog();
         string path = @"..\..\Data\flats.json";
         DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(FlatCatalog));
 
+        public FlatCatalogManager()
+        {
+            LoadData();
+        }
+       
         public void SaveData()
         {
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
@@ -59,6 +64,7 @@ namespace FlatAgency.DataManagers
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void DelFlat()

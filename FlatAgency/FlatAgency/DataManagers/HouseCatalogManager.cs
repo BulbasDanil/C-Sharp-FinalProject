@@ -12,9 +12,14 @@ namespace FlatAgency.DataManagers
 {
     class HouseCatalogManager
     {
-        HouseCatalog HouseCatalog = new HouseCatalog();
+        public HouseCatalog HouseCatalog = new HouseCatalog();
         string path = @"..\..\Data\houses.json";
         DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(HouseCatalog));
+
+        public HouseCatalogManager()
+        {
+            LoadData();
+        }
 
         public void SaveData()
         {
@@ -56,6 +61,7 @@ namespace FlatAgency.DataManagers
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void DelHouse()

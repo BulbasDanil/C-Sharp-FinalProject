@@ -12,9 +12,14 @@ namespace FlatAgency.DataManagers
 {
     class OfficeCatalogManager
     {
-        OfficeCatalog OfficeCatalog = new OfficeCatalog();
+        public OfficeCatalog OfficeCatalog = new OfficeCatalog();
         string path = @"..\..\Data\offices.json";
         DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(OfficeCatalog));
+
+        public OfficeCatalogManager()
+        {
+            LoadData();
+        }
 
         public void SaveData()
         {
@@ -59,6 +64,7 @@ namespace FlatAgency.DataManagers
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void DelOffice()
