@@ -23,7 +23,7 @@ namespace FlatAgency.DataManagers
 
         public void SaveData()
         {
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream fs = new FileStream(path, FileMode.Truncate, FileAccess.Write))
             {
                 serializer.WriteObject(fs, OfficeCatalog);
             }
@@ -73,26 +73,17 @@ namespace FlatAgency.DataManagers
             {
                 OfficeCatalog.DisplayOffices();
 
-                Console.WriteLine("\nВведите адрес для удаления:");
+                Console.WriteLine("\nВведите адрес для продажи:");
                 string buf = Console.ReadLine();
 
-                for(int i=0;i<OfficeCatalog.Offices.Count;i++)
-                {
-                    if(OfficeCatalog.Offices[i].Adress == buf)
-                    {
-                        OfficeCatalog.Offices.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (i == OfficeCatalog.Offices.Count - 1)
-                            Console.WriteLine("Офис не найден");
-                    }
-                }
+                Office toDel = OfficeCatalog.Offices.Single(f => f.Adress == buf);
+                OfficeCatalog.Offices.Remove(toDel);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void EditOffice()
@@ -149,6 +140,7 @@ namespace FlatAgency.DataManagers
                         Console.WriteLine("Неправильный ввод");
                         break;
                 }
+                SaveData();
             }
             catch (Exception e )
             {

@@ -23,7 +23,7 @@ namespace FlatAgency.DataManagers
 
         public void SaveData()
         {
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream fs = new FileStream(path, FileMode.Truncate, FileAccess.Write))
             {
                 serializer.WriteObject(fs, HouseCatalog);
             }
@@ -73,23 +73,14 @@ namespace FlatAgency.DataManagers
                 Console.WriteLine("\nВведите адрес для удаления:");
                 string buf = Console.ReadLine();
 
-                for (int i = 0; i < HouseCatalog.Houses.Count; i++)
-                {
-                    if (HouseCatalog.Houses[i].Adress == buf)
-                    {
-                        HouseCatalog.Houses.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (i == HouseCatalog.Houses.Count - 1)
-                            Console.WriteLine("Дом не найден");
-                    }
-                }
+                House toDel = HouseCatalog.Houses.Single(f => f.Adress == buf);
+                HouseCatalog.Houses.Remove(toDel);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void EditHouse()
@@ -147,6 +138,7 @@ namespace FlatAgency.DataManagers
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
     }

@@ -47,6 +47,7 @@
     <Compile Include="Catalogs\FlatCatalog.cs" />
     <Compile Include="Catalogs\HouseCatalog.cs" />
     <Compile Include="Catalogs\OfficeCatalog.cs" />
+    <Compile Include="Exceptions\InputException.cs" />
     <Compile Include="Models\Flat.cs" />
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\Building.cs" />
