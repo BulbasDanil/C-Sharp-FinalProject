@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,19 +47,25 @@
     <Compile Include="Catalogs\FlatCatalog.cs" />
     <Compile Include="Catalogs\HouseCatalog.cs" />
     <Compile Include="Catalogs\OfficeCatalog.cs" />
-    <Compile Include="DataManagers\Flat.cs" />
-    <Compile Include="DataManagers\House.cs" />
-    <Compile Include="DataManagers\Office.cs" />
-    <Compile Include="DataModels\FlatCatalogManager.cs" />
-    <Compile Include="DataModels\HouseCatalogManager.cs" />
-    <Compile Include="DataModels\OfficeCatalogManager.cs" />
+    <Compile Include="Models\Flat.cs" />
+    <Compile Include="Models\House.cs" />
+    <Compile Include="Models\Building.cs" />
+    <Compile Include="Models\Office.cs" />
+    <Compile Include="DataManagers\FlatCatalogManager.cs" />
+    <Compile Include="DataManagers\HouseCatalogManager.cs" />
+    <Compile Include="DataManagers\OfficeCatalogManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\DialogController.cs" />
-    <Compile Include="UI\Menu.cs" />
+    <Compile Include="UI\MainMenu.cs" />
+    <Compile Include="UI\MenuForClient.cs" />
+    <Compile Include="UI\MenuForManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\flats.json" />
+    <None Include="Data\houses.json" />
+    <None Include="Data\offices.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
