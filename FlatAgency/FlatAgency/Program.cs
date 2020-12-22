@@ -10,14 +10,11 @@ using FlatAgency.UI;
 namespace FlatAgency
 {
     class Program
-    {
-        
+    {        
         static void Main(string[] args)
         {
-            MenuForClient Mfc = new MenuForClient();
-            MenuForManager Mfm = new MenuForManager();
-
-            Mfm.Display();
+            MainMenu mm = new MainMenu();
+            mm.displayMenu();
         }
     }
 }

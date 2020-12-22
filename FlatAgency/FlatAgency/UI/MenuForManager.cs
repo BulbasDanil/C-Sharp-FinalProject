@@ -22,9 +22,9 @@ namespace FlatAgency.UI
             do
             {
                 Console.Clear();
-                Console.WriteLine("Менеджерский модуль системы просмотра квартир 3000");
+                Console.WriteLine("\nМенеджерский модуль системы просмотра квартир 3000\n");
                 dc.displayManager();
-                Console.WriteLine("Выберите действие:");
+                Console.WriteLine("\nВыберите действие:");
                 try
                 {
                     choice = Int32.Parse(Console.ReadLine());
@@ -71,6 +71,9 @@ namespace FlatAgency.UI
                         break;
                     case 12:
                         ocm.DelOffice();
+                        break;
+                    case 0:
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Неправильный ввод");

@@ -18,7 +18,7 @@ namespace FlatAgency.Models
 
         public override string ToString()
         {
-            return $"Office {Adress,10} {Floors,10} - floors {Square,10} - square (M2) {Price,10} - price (USD)";
+            return $"House {Adress,10} {Floors,10} - floors {Square,10} - square (M2) {Price,10} - price (USD)";
         }
     }
 }

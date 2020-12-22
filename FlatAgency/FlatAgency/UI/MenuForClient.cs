@@ -22,9 +22,9 @@ namespace FlatAgency.UI
             do
             {
                 Console.Clear();
-                Console.WriteLine("Клитентский модуль системы просмотра квартир 3000");
+                Console.WriteLine("\nКлитентский модуль системы просмотра квартир 3000\n");
                 dc.displayClient();
-                Console.WriteLine("Выберите действие:");
+                Console.WriteLine("\nВыберите действие:");
                 try
                 {
                     choice = Int32.Parse(Console.ReadLine());
@@ -48,11 +48,13 @@ namespace FlatAgency.UI
                     case 4:
                         Console.WriteLine("На данный момент консультантов нет =(");
                         break;
+                    case 0:
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Неправильный ввод");
                         break;
                 }
-
             } while (dc.allowContinue());
         }
     }
