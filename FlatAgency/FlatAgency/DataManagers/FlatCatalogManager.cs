@@ -102,6 +102,38 @@ namespace FlatAgency.DataManagers
                     if (FlatCatalog.Flats[i].Adress == buf)
                     {
                         id = i;
+
+                        //Выбор параметров
+                        Console.WriteLine("\nВведите параметр для изменения: \n1 - адрес \n2 - цена \n3 - номер входа \n4 - этаж \n5 - комнаты\n");
+                        int n = Int32.Parse(Console.ReadLine());
+
+                        switch (n)
+                        {
+                            case 1:
+                                Console.WriteLine("Введите новое значение: ");
+                                FlatCatalog.Flats[id].Adress = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Введите новое значение: ");
+                                FlatCatalog.Flats[id].Price = Double.Parse(Console.ReadLine());
+                                break;
+                            case 3:
+                                Console.WriteLine("Введите новое значение: ");
+                                FlatCatalog.Flats[id].Entrance = Int32.Parse(Console.ReadLine());
+                                break;
+                            case 4:
+                                Console.WriteLine("Введите новое значение: ");
+                                FlatCatalog.Flats[id].Floor = Int32.Parse(Console.ReadLine());
+                                break;
+                            case 5:
+                                Console.WriteLine("Введите новое значение: ");
+                                FlatCatalog.Flats[id].Rooms = Int32.Parse(Console.ReadLine());
+                                break;
+                            default:
+                                Console.WriteLine("Неправильный ввод");
+                                break;
+                        }
+
                     }
                     else
                     {
@@ -110,36 +142,7 @@ namespace FlatAgency.DataManagers
                     }
                 }
 
-                //Выбор параметров
-                Console.WriteLine("\nВведите параметр для изменения: \n1 - адрес \n2 - цена \n3 - номер входа \n4 - этаж \n5 - комнаты\n");
-                int n = Int32.Parse(Console.ReadLine());
-
-                switch (n)
-                {
-                    case 1:
-                        Console.WriteLine("Введите новое значение: ");
-                        FlatCatalog.Flats[id].Adress = Console.ReadLine();
-                        break;
-                    case 2:
-                        Console.WriteLine("Введите новое значение: ");
-                        FlatCatalog.Flats[id].Price = Double.Parse(Console.ReadLine());
-                        break;
-                    case 3:
-                        Console.WriteLine("Введите новое значение: ");
-                        FlatCatalog.Flats[id].Entrance = Int32.Parse(Console.ReadLine());
-                        break;
-                    case 4:
-                        Console.WriteLine("Введите новое значение: ");
-                        FlatCatalog.Flats[id].Floor = Int32.Parse(Console.ReadLine());
-                        break;
-                    case 5:
-                        Console.WriteLine("Введите новое значение: ");
-                        FlatCatalog.Flats[id].Rooms = Int32.Parse(Console.ReadLine());
-                        break;
-                    default:
-                        Console.WriteLine("Неправильный ввод");
-                        break;
-                }
+                
             }
             catch (Exception e)
             {
