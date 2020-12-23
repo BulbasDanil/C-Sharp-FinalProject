@@ -7,6 +7,7 @@ using FlatAgency.Catalogs;
 using FlatAgency.Models;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using FlatAgency.Exceptions;
 
 namespace FlatAgency.DataManagers
 {
@@ -105,7 +106,8 @@ namespace FlatAgency.DataManagers
 
                         //Выбор параметров
                         Console.WriteLine("\nВведите параметр для изменения: \n1 - адрес \n2 - цена \n3 - номер входа \n4 - этаж \n5 - площадь\n");
-                        int n = Int32.Parse(Console.ReadLine());
+                        if (!Int32.TryParse(Console.ReadLine(), out int n))
+                            throw new InputException("Incorrect format", "Incorrect format");
 
                         switch (n)
                         {
