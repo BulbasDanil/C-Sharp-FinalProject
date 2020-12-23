@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlatAgency.UI;
+using FlatAgency.Exceptions;
 
 // Система управления квартирным агентством
 
@@ -13,14 +14,21 @@ namespace FlatAgency
     {        
         static void Main(string[] args)
         {
-            MainMenu mm = new MainMenu();
-            mm.displayMenu();
+            try
+            {
+                MainMenu mm = new MainMenu();
+                mm.displayMenu();
+            }
+            catch (InputException ie)
+            {
+                Console.WriteLine(ie.Message);
+            }
         }
     }
 }
 
-//Пользовательские исключения
+//Пользовательские исключения +
+ 
+//Сохранение и удаление колизия Пофиксил
 
-//Сохранение и удаление колизия
-
-//Меню в класе програм
+//Меню в класе програм Есть

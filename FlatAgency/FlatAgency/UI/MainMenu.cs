@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlatAgency.Exceptions;
 
 namespace FlatAgency.UI
 {
@@ -28,7 +29,9 @@ namespace FlatAgency.UI
             {
                 dispay();
                 Console.WriteLine("\nВыберите меню: ");
-                int n = Int32.Parse(Console.ReadLine());
+
+                if (!Int32.TryParse(Console.ReadLine(), out int n)) 
+                    throw new InputException("Incorrect format", "Incorrect format");
 
                 switch (n)
                 {

@@ -7,6 +7,7 @@ using FlatAgency.Catalogs;
 using FlatAgency.Models;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using FlatAgency.Exceptions;
 
 namespace FlatAgency.DataManagers
 {
@@ -23,7 +24,7 @@ namespace FlatAgency.DataManagers
 
         public void SaveData()
         {
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream fs = new FileStream(path, FileMode.Truncate, FileAccess.Write))
             {
                 serializer.WriteObject(fs, HouseCatalog);
             }
@@ -73,23 +74,14 @@ namespace FlatAgency.DataManagers
                 Console.WriteLine("\nВведите адрес для удаления:");
                 string buf = Console.ReadLine();
 
-                for (int i = 0; i < HouseCatalog.Houses.Count; i++)
-                {
-                    if (HouseCatalog.Houses[i].Adress == buf)
-                    {
-                        HouseCatalog.Houses.RemoveAt(i);
-                    }
-                    else
-                    {
-                        if (i == HouseCatalog.Houses.Count - 1)
-                            Console.WriteLine("Дом не найден");
-                    }
-                }
+                House toDel = HouseCatalog.Houses.Single(f => f.Adress == buf);
+                HouseCatalog.Houses.Remove(toDel);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
         public void EditHouse()
@@ -108,6 +100,35 @@ namespace FlatAgency.DataManagers
                     if (HouseCatalog.Houses[i].Adress == buf)
                     {
                         id = i;
+
+                        //Выбор параметров
+                        Console.WriteLine("\nВведите параметр для изменения: \n1 - адрес \n2 - цена \n3 - этажи \n4 - площадь\n");
+                        if (!Int32.TryParse(Console.ReadLine(), out int n))
+                            throw new InputException("Incorrect format", "Incorrect format");
+
+                        switch (n)
+                        {
+                            case 1:
+                                Console.WriteLine("Введите новое значение: ");
+                                HouseCatalog.Houses[id].Adress = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Введите новое значение: ");
+                                HouseCatalog.Houses[id].Price = Double.Parse(Console.ReadLine());
+                                break;
+                            case 3:
+                                Console.WriteLine("Введите новое значение: ");
+                                HouseCatalog.Houses[id].Floors = Int32.Parse(Console.ReadLine());
+                                break;
+                            case 4:
+                                Console.WriteLine("Введите новое значение: ");
+                                HouseCatalog.Houses[id].Square = Int32.Parse(Console.ReadLine());
+                                break;
+                            default:
+                                Console.WriteLine("Неправильный ввод");
+                                break;
+                        }
+
                     }
                     else
                     {
@@ -115,38 +136,12 @@ namespace FlatAgency.DataManagers
                             Console.WriteLine("Дом не найден");
                     }
                 }
-
-                //Выбор параметров
-                Console.WriteLine("\nВведите параметр для изменения: \n1 - адрес \n2 - цена \n3 - этажи \n4 - площадь\n");
-                int n = Int32.Parse(Console.ReadLine());
-
-                switch (n)
-                {
-                    case 1:
-                        Console.WriteLine("Введите новое значение: ");
-                        HouseCatalog.Houses[id].Adress = Console.ReadLine();
-                        break;
-                    case 2:
-                        Console.WriteLine("Введите новое значение: ");
-                        HouseCatalog.Houses[id].Price = Double.Parse(Console.ReadLine());
-                        break;
-                    case 3:
-                        Console.WriteLine("Введите новое значение: ");
-                        HouseCatalog.Houses[id].Floors = Int32.Parse(Console.ReadLine());
-                        break;
-                    case 4:
-                        Console.WriteLine("Введите новое значение: ");
-                        HouseCatalog.Houses[id].Square = Int32.Parse(Console.ReadLine());
-                        break;
-                    default:
-                        Console.WriteLine("Неправильный ввод");
-                        break;
-                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
+            SaveData();
         }
 
     }

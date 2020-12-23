@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FlatAgency.UI;
 using FlatAgency.DataManagers;
-
+using FlatAgency.Exceptions;
 
 namespace FlatAgency.UI
 {
@@ -15,7 +15,6 @@ namespace FlatAgency.UI
         FlatCatalogManager fcm = new FlatCatalogManager();
         HouseCatalogManager hcm = new HouseCatalogManager();
         OfficeCatalogManager ocm = new OfficeCatalogManager();
-        int choice;
 
         public void Display()
         {
@@ -25,14 +24,8 @@ namespace FlatAgency.UI
                 Console.WriteLine("\nМенеджерский модуль системы просмотра квартир 3000\n");
                 dc.displayManager();
                 Console.WriteLine("\nВыберите действие:");
-                try
-                {
-                    choice = Int32.Parse(Console.ReadLine());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                if (!Int32.TryParse(Console.ReadLine(), out int choice))
+                    throw new InputException("Incorrect format", "Incorrect format");
 
                 switch (choice)
                 {
@@ -81,6 +74,7 @@ namespace FlatAgency.UI
                 }
 
             } while (dc.allowContinue());
+            Environment.Exit(0);
         }
     }
 }
