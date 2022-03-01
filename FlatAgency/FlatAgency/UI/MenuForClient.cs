@@ -21,9 +21,9 @@ namespace FlatAgency.UI
             do
             {
                 Console.Clear();
-                Console.WriteLine("\nКлитентский модуль системы просмотра квартир 3000\n");
+                Console.WriteLine("\nClient module\n");
                 dc.displayClient();
-                Console.WriteLine("\nВыберите действие:");
+                Console.WriteLine("\nChoose action:");
                 if (!Int32.TryParse(Console.ReadLine(), out int choice))
                     throw new InputException("Incorrect format", "Incorrect format");
 
@@ -39,13 +39,13 @@ namespace FlatAgency.UI
                         ocm.OfficeCatalog.DisplayOffices();
                         break;
                     case 4:
-                        Console.WriteLine("На данный момент консультантов нет =(");
+                        Console.WriteLine("No avaliable consultants at the moment");
                         break;
                     case 0:
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Неправильный ввод");
+                        Console.WriteLine("There is no such action");
                         break;
                 }
             } while (dc.allowContinue());
