@@ -13,14 +13,14 @@ namespace FlatAgency.UI
         MenuForClient Mfc = new MenuForClient();
         MenuForManager Mfm = new MenuForManager();
 
-        string password = "QwertyPepega123";
+        string password = "admin";
 
         public void dispay()
         {
             Console.Clear();
-            Console.WriteLine("\nWelcome to систему просмотра квартир 3000. Выберите нужный вам модуль\n");
-            Console.WriteLine(" 1. Меню для клиента");
-            Console.WriteLine(" 2. Меню для менеджера");
+            Console.WriteLine("\nFlat agency manager. Select module\n");
+            Console.WriteLine(" 1. Client menu");
+            Console.WriteLine(" 2. Manager menu");
         }
 
         public void displayMenu()
@@ -28,7 +28,7 @@ namespace FlatAgency.UI
             do
             {
                 dispay();
-                Console.WriteLine("\nВыберите меню: ");
+                Console.WriteLine("\nSelect menu: ");
 
                 if (!Int32.TryParse(Console.ReadLine(), out int n)) 
                     throw new InputException("Incorrect format", "Incorrect format");
@@ -39,15 +39,15 @@ namespace FlatAgency.UI
                         Mfc.Display();
                         break;
                     case 2:
-                        Console.WriteLine("Введите пароль:");
+                        Console.WriteLine("Enter password (try for demo 'admin' ):");
                         string buf = Console.ReadLine();
                         if (buf == password)
                             Mfm.Display();
                         else
-                            Console.WriteLine("Неправильный пароль");
+                            Console.WriteLine("Incorrect password, try 'admin'");
                         break;
                     default:
-                        Console.WriteLine("Нет такого действия!");
+                        Console.WriteLine("There is no such action");
                         break;
                 }
 

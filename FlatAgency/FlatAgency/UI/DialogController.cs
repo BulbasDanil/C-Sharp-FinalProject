@@ -11,9 +11,9 @@ namespace FlatAgency.UI
 
         public bool allowContinue()
         {
-            Console.WriteLine("\n> Продолжаем? (Да/Нет)");
+            Console.WriteLine("\n> Continue? (Y/N)");
             string ans = Console.ReadLine();
-            if (ans == "Да" || ans == "да")
+            if (ans == "Y" || ans == "y")
                 return true;
             else
                 return false;
@@ -21,28 +21,28 @@ namespace FlatAgency.UI
 
         public void displayClient()
         {
-            Console.WriteLine(" 1. Просмотреть квартиры");
-            Console.WriteLine(" 2. Просмотреть дома");
-            Console.WriteLine(" 3. Просмотреть офисы");
-            Console.WriteLine(" 4. Позвать консультанта для оформления заказа");
-            Console.WriteLine(" 0. Выход");
+            Console.WriteLine(" 1. See flats");
+            Console.WriteLine(" 2. See houses");
+            Console.WriteLine(" 3. See offices");
+            Console.WriteLine(" 4. Help me");
+            Console.WriteLine(" 0. Exit");
         }
 
         public void displayManager()
         {
-            Console.WriteLine(" 1. Просмотреть квартиры");
-            Console.WriteLine(" 2. Просмотреть дома");
-            Console.WriteLine(" 3. Просмотреть офисы");
-            Console.WriteLine(" \n 4. Изменить квартиру");
-            Console.WriteLine(" 5. Изменить дом");
-            Console.WriteLine(" 6. Изменить офис");
-            Console.WriteLine(" \n 7. Добавить квартиру");
-            Console.WriteLine(" 8. Добавить дом");
-            Console.WriteLine(" 9. Добавить офис");
-            Console.WriteLine(" \n 10. Продать квартиру");
-            Console.WriteLine(" 11. Продать дом");
-            Console.WriteLine(" 12. Продать офис");
-            Console.WriteLine(" \n 0. Выход");
+            Console.WriteLine(" 1. See flats");
+            Console.WriteLine(" 2. See houses");
+            Console.WriteLine(" 3. See offices");
+            Console.WriteLine(" \n 4. Edit flat");
+            Console.WriteLine(" 5. Edit house");
+            Console.WriteLine(" 6. Edit office");
+            Console.WriteLine(" \n 7. Add flat");
+            Console.WriteLine(" 8. Add house");
+            Console.WriteLine(" 9. Add office");
+            Console.WriteLine(" \n 10. Sell flat");
+            Console.WriteLine(" 11. Sell hous");
+            Console.WriteLine(" 12. Sell office");
+            Console.WriteLine(" \n 0. Exit");
         }
     }
 }

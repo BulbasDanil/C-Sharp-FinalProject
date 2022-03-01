@@ -21,9 +21,9 @@ namespace FlatAgency.UI
             do
             {
                 Console.Clear();
-                Console.WriteLine("\nМенеджерский модуль системы просмотра квартир 3000\n");
+                Console.WriteLine("\n Manager module\n");
                 dc.displayManager();
-                Console.WriteLine("\nВыберите действие:");
+                Console.WriteLine("\nChoose action:");
                 if (!Int32.TryParse(Console.ReadLine(), out int choice))
                     throw new InputException("Incorrect format", "Incorrect format");
 
@@ -69,7 +69,7 @@ namespace FlatAgency.UI
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Неправильный ввод");
+                        Console.WriteLine("There is no such action");
                         break;
                 }
 
